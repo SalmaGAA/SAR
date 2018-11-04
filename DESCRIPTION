@@ -2,11 +2,11 @@ Package: SAR
 Type: Package
 Title: Simulation of Ampicillin Resistance in Staphylococcus aureus Bacteria Over Multiple Exposures
 Version: 0.1.0
-Author: c(person("Ahmad", "Adbel-Azim" email = "agabdel.azim@gmail.com", role = ["aut", "cre"]), 
+Author: c(person("Ahmad", "Adbel-Azim" email = "agabdel.azim@gmail.com", role = ["aut", "cre"]),
           person("Salma", "Abdel-Azim", email = "salma.abdelazim@gmail.com", role = ["aut"]),
           person("Gamal", "Abdel-Azim", email = "gamal.azim@gmail.com", role = ["aut"]))
 Maintainer: Ahmad Abdel-Azim <agabdel.azim@gmail.com>
-Description: *add later*
+Description: This is the SAR simulation package. 
 License: MIT
 Encoding: UTF-8
 LazyData: true
