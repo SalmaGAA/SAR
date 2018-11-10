@@ -17,9 +17,9 @@
 #'
 #' @export
 # Function to construct initial population
-constructPopulation <- function(Psize, Nl, Ng, startingFitness) {
+constructPopulation <- function(Psize = 300, Nl = c(1, 6, 10), Ng = c(6, 10, 12), startingFitness = 0.51) {
   # Start with a population that survives the antimicrobial substance with a probability = startingFitness
-  # A startingFirness greater than 0 is an indicator of previous spontaneous mutations!
+  # A startingFitness greater than 0 is an indicator of previous spontaneous mutations!
   # starting fitness sampled from a random normal with mean = startingFitness and std dev of 1%
 
   fitness <- rnorm(mean = startingFitness, sd = 0.01, n = Psize)
@@ -29,7 +29,7 @@ constructPopulation <- function(Psize, Nl, Ng, startingFitness) {
   fitness[fitness < 0] <- 0; fitness[fitness > 1] <- 1;
   Nc = sum(Ng * Nl)
   P <- matrix(0, nrow = Psize, ncol = Nc)
-  P <- cbind(P, fitness)  # hock fitness to the end of each row
+  P <- cbind(P, fitness)  # hook fitness to the end of each row
   P <- t(apply(P, 1, function(x) setFitness(x, Nl=Nl, Ng=Ng)))
 
   return(P)

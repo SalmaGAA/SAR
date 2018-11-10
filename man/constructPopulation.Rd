@@ -13,10 +13,12 @@ constructPopulation(Psize, Nl, Ng, startingFitness)
 
 \item{Ng}{Number of genes per section. One-dimensional array of length equal to number of sections. Defaults to c(6, 10, 12).}
 
-\item{startingFitness}{Starting population fitness, represnted by the proportion of mutated bacterial cells in the population. Defaults to 0.51.}
+\item{startingFitness}{Starting population fitness, represnted by the proportion of mutated bacterial loci in the population. Defaults to 0.51.}
 }
 \description{
-TO BE ADDED LATER
+This function constructs an initial bacterial population with designated population parameters, such as starting fitness an genome complexity. A binary 2-dimensional matrix is created, where each row represents a distinct bacterial genome in the poulation. The number of rows in the population matrix will be equal to Psize. Within each row, the number of genes will depend on set values for Nl and Ng. For example, if Nl is set to three sections with 1, 6, and 10 loci, and Ng is set to 6, 10, and 12 genes per loci within each section, the resulting bacterial genome will have 1*6 + 6*10 + 10*12  = 186 genes across all sections. Thus, each row of the resulting matrix will include 186 columns. Each gene in a bacterial genome is assigned either a 1 or 0, depending on the mutation status of that gene, where a zero represnts an unmutated gene, and 1 represnts a mutated gene.
+
+The starting fitness of the bacterial population can be set in this function. Starting fitness is defined as the ability of bacteria to resist antimcrobial stress prior to any mutation-inducing treatments. In other words, a  startingFitness greater than 0 is an indicator of previous spontaneous mutations. The designated value for startingFitness in this function will create a population that survives an antimicrobial substance with a probability equal to startingFitness. Randomly selected loci within the bacterial population are mutated with mean = startingFitness and std dev = 1%, using another function in the package: setFitnes.
 }
 \author{
 Ahmad Abdel-Azim \email {agabdel.azim@gmail.com}

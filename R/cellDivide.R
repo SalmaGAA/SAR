@@ -73,7 +73,7 @@ cellDivide <- function(P, Rd, maxPsize, thr) {
 
 
 #' @examples
-#' P <- cellDivide(P, Rd = 0.2, maxPsize = 500, thr = 0.51)
+#' P2 <- cellDivide(P, Rd = 0.2, maxPsize = 500, thr = 0.51)
 #'
 #' @keywords SAR
 #' @keywords resistance
