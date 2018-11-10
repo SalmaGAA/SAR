@@ -36,6 +36,31 @@ constructPopulation <- function(Psize = 300, Nl = c(1, 6, 10), Ng = c(6, 10, 12)
 }
 
 
+setFitness <- function(bCell, Nl, Ng) {
+
+  if(length(Nl) != length(Ng))
+    stop("Number of sections in regions and loci are different!")
+
+  fitness <- bCell[length(bCell)]
+  bCell <- bCell[-length(bCell)]
+  sections <- length(Nl)
+  rows <- cumsum(Ng)  # 10  20  30
+  rrows <- rep(1:rows[1], each = Nl[1])
+  for(i in 2:sections)
+    rrows <- c(rrows, rep((rows[i-1]+1):(rows[i]), each = Nl[i]))
+
+  total.genes <- sum(Ng)
+  Z <- diag(total.genes)
+  Z <- Z[rrows,]
+
+  setGenes = numeric(total.genes)
+  setGenes[sample.int(total.genes, size = round(fitness*total.genes))] = 1
+
+  return(setGenes %*% t(Z))
+
+}
+
+
 #' @examples
 #' P <- constructPopulation(Psize = 100, Nl = c(1, 2, 3), Ng = c(10, 10, 10), startingFitness = 0.51)
 
