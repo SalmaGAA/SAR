@@ -13,8 +13,39 @@
 #' @param Psize Starting popultaion size. Defaults to 300.
 #' @param startingFitness Starting population fitness, represnted by the proportion of mutated bacterial cells in the population. Defaults to 0.51.
 #'
-#' @description TO BE ADDED LATER
+#' @description This function constructs an initial bacterial population with designated population parameters, such as starting fitness an genome complexity.
 #'
+#' @details A binary 2-dimensional matrix is created, where each row represents a distinct bacterial
+#' genome in the poulation. The number of rows in the population matrix will be equal to Psize. Within
+#' each row, the number of genes will be the cross product of \code{Nl} and \code{Ng}, i.e. \code{crossprod(Nl, Ng)}.
+#' For example, if \code{Nl} is set to three sections with 1, 6, and 10 loci, and \code{Ng} is set to 6, 10, and 12
+#' genes per loci within each section, the resulting bacterial genome will have 1*6 + 6*10 + 10*12  =
+#' 186 genes across all sections. Thus, each row of the resulting matrix will include 186 columns.
+#' Each gene in a bacterial genome is assigned either a 1 or 0, depending on the mutation status of
+#' that gene, where a zero represnts an unmutated gene, and 1 represnts a mutated gene. \cr\cr
+#'
+#' The starting fitness of the bacterial population can be set in this function. Starting fitness is
+#' defined as the ability of bacteria to resist antimcrobial stress prior to any mutation-inducing
+#' treatments. In other words, a  \code{startingFitness} greater than 0 is an indicator of previous spontaneous
+#' mutations. The designated value for startingFitness in this function will create a population that
+#' survives an antimicrobial substance with a probability equal to \code{startingFitness}. Mutation values are
+#' randomly assigned to bacterial cells in the population matrix with mean = \code{startingFitness} and std
+#' dev = 1\%. Loci within the each bacterial cell are mutated so that the proportion of mutated loci in
+#' each bacterial cell is equal to the assigned fitness value.
+#'
+#' @return A object of class "matrix" with dimensions \code{Psize} by the cross product of \code{Nl} and \code{Ng}
+#' is created by this function.
+#'
+
+#' @examples
+#' P <- constructPopulation(Psize = 100, Nl = c(1, 2, 3), Ng = c(10, 10, 10), startingFitness = 0.51)
+
+#'@keywords SAR
+#'@keywords resistance
+#'@keywords antibiotic
+#'@keywords simulation
+
+
 #' @export
 # Function to construct initial population
 constructPopulation <- function(Psize = 300, Nl = c(1, 6, 10), Ng = c(6, 10, 12), startingFitness = 0.51) {
@@ -61,10 +92,3 @@ setFitness <- function(bCell, Nl, Ng) {
 }
 
 
-#' @examples
-#' P <- constructPopulation(Psize = 100, Nl = c(1, 2, 3), Ng = c(10, 10, 10), startingFitness = 0.51)
-
-#'@keywords SAR
-#'@keywords resistance
-#'@keywords antibiotic
-#'@keywords simulation
