@@ -102,4 +102,3 @@ nextDaySample <- function(P, Rd, Psize) {
 #'@keywords antibiotic
 #'@keywords simulation
 #'
-NULL
