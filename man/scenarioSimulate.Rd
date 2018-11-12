@@ -14,16 +14,28 @@ Rm = 0.01, startingFitness = 0.51, thr = .51, maxPsize = 2000)
 
 \item{Ng}{Number of genes per section. One-dimensional array of length equal to number of sections. Defaults to c(6, 10, 12).}
 
+\item{runs}{ADD LATER}
+
+\item{nDays}{ADD LATER}
+
+\item{gen.interval}{ADD LATER}
+
+\item{Rm}{ADD LATER}
+
 \item{startingFitness}{Starting population fitness, represnted by the proportion of mutated bacterial cells in the population. Defaults to 0.51.}
+
+\item{thr}{ADD LATER}
+
+\item{maxPsize}{ADD LATER}
 }
 \value{
-
+ADD LATER
 }
 \description{
-
+ADD LATER
 }
 \details{
-
+ADD LATER
 }
 \examples{
 x <- scenarioSimulate()

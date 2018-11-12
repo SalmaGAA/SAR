@@ -20,8 +20,8 @@ bactrial populaton as a result of the evolutionary stress that an antimicrobial 
 }
 \details{
 Mutate receives a vector, \code{bCell}, to represent the bacterial genome, along with poulation
-mutation rate, \code{Rm}. Each gene within \code{bCell} is either represented as 1 or 0, depending on the
-mutation status of that gene, where 0 represnts an unmutated gene, and 1 represnts a mutated gene.
+mutation rate, \code{Rm}. Each locus within \code{bCell} is either represented as 1 or 0, depending on the
+mutation status of that gene, where 0 represnts an unmutated locus, and 1 represnts a mutated locus.
 The function then changes 0's to 1's with a probability = \code{Rm}. No reverse mutations occur, and there
 is no effect on mutant genes.
 }
