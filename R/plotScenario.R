@@ -24,7 +24,7 @@
 #'
 
 #' @examples
-#' plotScenario(scenario = scenarioSimulate, gen.pd = 24, nDay = 20, Nl = c(1, 2, 3), Ng = c(10, 10, 10), ylim = 0.5, 0.85)
+#' plotScenario(scenario = scenarioSimulate, gen.pd = 24, nDay = 20, Nl = c(1, 2, 3), Ng = c(10, 10, 10), ylim = c(0.5, 0.85))
 
 #'@keywords SAR
 #'@keywords resistance

@@ -4,8 +4,7 @@
 \alias{scenarioSimulate}
 \title{Simulate an Entire Genome Scenario}
 \usage{
-scenarioSimulate(Psize = 300, Nl = c(1, 6, 10), Ng = c(6, 10, 12), runs = 10, nDays = 20, gen.interval = 60,
-Rm = 0.01, startingFitness = 0.51, thr = .51, maxPsize = 2000)
+scenarioSimulate(Psize, Nl, Ng, runs, nDays, gen.interval, Rm, startingFitness, thr, maxPsize)
 }
 \arguments{
 \item{Psize}{Starting popultaion size. Defaults to 300.}

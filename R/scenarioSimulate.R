@@ -6,8 +6,7 @@
 #'
 #' @name scenarioSimulate
 #'
-#' @usage scenarioSimulate(Psize = 300, Nl = c(1, 6, 10), Ng = c(6, 10, 12), runs = 10, nDays = 20, gen.interval = 60,
-#' Rm = 0.01, startingFitness = 0.51, thr = .51, maxPsize = 2000)
+#' @usage scenarioSimulate(Psize, Nl, Ng, runs, nDays, gen.interval, Rm, startingFitness, thr, maxPsize)
 #'
 #' @param Psize Starting popultaion size. Defaults to 300.
 #' @param Nl Number of loci per gene per section. One-dimensional array of length equal to number of sections. Defaults to c(1, 6, 10).
@@ -38,8 +37,8 @@
 #' @keywords simulation
 
 #' @export
-scenarioSimulate <- function(Psize, Nl, Ng, runs = 100, nDays = 20, gen.interval = 60,
-                       Rm = 0.001, startingFitness = 0.51, thr = .51, maxPsize = 2000) {
+scenarioSimulate <- function(Psize = 300, Nl = c(1, 6, 10), Ng = c(6, 10, 12), runs = 10, nDays = 20,
+                             gen.interval = 60, Rm = 0.01, startingFitness = 0.51, thr = .51, maxPsize = 2000) {
 
   if(length(Nl) != length(Ng))
     stop("Number of sections in regions and loci are different!")
