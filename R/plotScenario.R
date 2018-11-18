@@ -38,8 +38,8 @@ plotScenario <- function(scenario, gen.pd, nDay, Nl, Ng, ylim) {
   scenario <- cleanUpZeros(scenario)
 
   ## Flatten 3D array into 2D array and assign column names: ni, fit, fit.1, fit.2, fit.3, SR, Nl1, Nl2, Nl3, Ng1, Ng2, Ng3, Day
-  flat.scenario <- flaten2D(scenario, Nl = Nl, Ng = Ng)
-  flatScenario$Day <- rep(rep(1:nDay, each = gen.pd), flat.scenario$SR[1])
+  flatScenario <- flaten2D(scenario, Nl = Nl, Ng = Ng)
+  flatScenario$Day <- rep(rep(1:nDay, each = gen.pd), flatScenario$SR[1])
   flatScenario.last <- flatScenario[seq(gen.pd, nrow(flatScenario), gen.pd), ] ## Keep only last generation per day
 
   ## plot averages and trend
