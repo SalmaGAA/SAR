@@ -49,9 +49,14 @@ scenarioSimulate <- function(Psize = 300, Nl = c(1, 6, 10), Ng = c(6, 10, 12), r
     x <- try(runSimulation(Psize = Psize, Nl = Nl, Ng = Ng, nDays = nDays,
                            gen.interval = gen.interval, Rm = Rm, startingFitness = startingFitness,
                            thr = thr, maxPsize = maxPsize), TRUE)
-    if(isTRUE(class(x) == "try-error")) {next}
-    else {allData[,,i] <- x}
-    cat("Finished run", i, "of total", runs, "runs", "\n")
+    if(isTRUE(class(x) == "try-error")) {
+      cat("\n", "FAILED RUN", i, "of total", runs, "runs", "\n")
+      next
+      }
+    else {
+      allData[,,i] <- x
+      cat("Finished run", i, "of total", runs, "runs", "\n")
+    }
   }
   return(allData)
 }
