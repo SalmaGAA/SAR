@@ -44,7 +44,7 @@ plotScenario <- function(scenario, gen.pd, nDay, Nl, Ng, ylim) {
 
   ## plot averages and trend
   par(mfrow = c(1,2))
-  plotAvg(flatScenario.last, tt = "Overall and Section Fitness", ylim = ylim)
+  plotAvg(flatScenario.last, tt = "Overall and Section Fitness", y.lim = ylim)
 
   legend("bottom", inset = c(0, -0.45), legend=c("Overall Fitness", "Section 1 Fitness", "Section 2 Fitness", "Section 3 Fitness"),
          col=c("dark green", "red", "orange", "yellow"), lty=c(2,NA, NA, NA),  lwd = 2.5, pch=16, cex = 1.5, xpd = NA, ncol = 4, text.width = c(13,13,13,13), x.intersp = .2)
