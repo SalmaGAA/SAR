@@ -2,7 +2,6 @@
 % Please edit documentation in R/getOverallResistance.R
 \name{getOverallResistance}
 \alias{getOverallResistance}
-\alias{getResistance}
 \title{Measure Overall Resistance of Bacterial Population}
 \usage{
 getResistance(gtype, Nl, Ng)
@@ -17,6 +16,12 @@ getResistance(gtype, Nl, Ng)
 \description{
 TO BE ADDED LATER
 }
+\examples{
+resist <- apply(P, 1, function(x) getResistance(x, Nl = c(1, 2, 3), Ng= c(10, 10, 10)))
+resist
+
+
+}
 \author{
 Ahmad Abdel-Azim \email {agabdel.azim@gmail.com}
 
@@ -24,3 +29,7 @@ Salma Abdel-Azim \email {salma.abdelazim@gmail.com}
 
 Gamal Abdel-Azim \email {gamal.azim@gmail.com}
 }
+\keyword{SAR}
+\keyword{antibiotic}
+\keyword{resistance}
+\keyword{simulation}

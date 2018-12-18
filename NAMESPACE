@@ -2,7 +2,7 @@
 
 export(cellDivide)
 export(constructPopulation)
-export(getResistance)
+export(getOverallResistance)
 export(getSectionResistance)
 export(mutate)
 export(plotScenario)

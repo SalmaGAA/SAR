@@ -15,56 +15,6 @@
 #'@description TO BE ADDED LATER
 
 
-# # Quanify Resistance
-# getResistance0 <- function(gtype, Nl, Ng) {
-#
-#   if(length(Nl) != length(Ng))
-#     stop("Number of sections in regions and loci are different!")
-#
-#   sections <- length(Nl)
-#   rows <- cumsum(Ng)  # 10  20  30
-#   rrows <- rep(1:rows[1], each = Nl[1])
-#   for(i in 2:sections)
-#     rrows <- c(rrows, rep((rows[i-1]+1):(rows[i]), each = Nl[i]))
-#
-#   total.genes <- sum(Ng)
-#   Z <- diag(total.genes)
-#   Z <- Z[rrows,]
-#
-#   X <- gtype %*% Z
-#   A <- numeric(total.genes)
-#   A[1:rows[1]] <- Nl[1] - 1
-#   for(i in 2:sections) A[(rows[i - 1] + 1):rows[i]] <- Nl[i] - 1
-#   resist = c(X) - A
-#   resist <- length(resist[resist == 1])
-#
-#   # Scale resistance before returning the number of 1's
-#   # XXX resist = startingFitness + (resist/total.genes)*(1 - startingFitness)
-#   resist = (resist/total.genes)
-#   return(resist)
-# }
-#
-
-#' @export
-# Quantify Resistance
-getResistance <- function(gtype, Nl, Ng) {
-
-  if(length(Nl) != length(Ng))
-    stop("Number of sections in regions and loci are different!")
-
-  sections <- length(Nl)
-  Ngl = Ng * Nl
-  starts <- c(1, cumsum(Ngl)+1)  # cumulative sum for loci
-  mutated.genes = 0
-  for(i in 1:sections) {
-    mutated.genes = mutated.genes + sumSection(gtype[starts[i]:(starts[i+1]-1)], Ng[i], Nl[i])
-  }
-
-  # Scale resistance before returning the number of 1's
-  return(mutated.genes/sum(Ng))
-}
-
-
 
 #' @examples
 #' resist <- apply(P, 1, function(x) getResistance(x, Nl = c(1, 2, 3), Ng= c(10, 10, 10)))
@@ -75,4 +25,57 @@ getResistance <- function(gtype, Nl, Ng) {
 #' @keywords resistance
 #' @keywords antibiotic
 #' @keywords simulation
+
+
+
+
+#' @export
+# Quanify Resistance
+getOverallResistance <- function(gtype, Nl, Ng) {
+
+  if(length(Nl) != length(Ng))
+    stop("Number of sections in regions and loci are different!")
+
+  sections <- length(Nl)
+  rows <- cumsum(Ng)  # 10  20  30
+  rrows <- rep(1:rows[1], each = Nl[1])
+  for(i in 2:sections)
+    rrows <- c(rrows, rep((rows[i-1]+1):(rows[i]), each = Nl[i]))
+
+  total.genes <- sum(Ng)
+  Z <- diag(total.genes)
+  Z <- Z[rrows,]
+
+  X <- gtype %*% Z
+  A <- numeric(total.genes)
+  A[1:rows[1]] <- Nl[1] - 1
+  for(i in 2:sections) A[(rows[i - 1] + 1):rows[i]] <- Nl[i] - 1
+  resist = c(X) - A
+  resist <- length(resist[resist == 1])
+
+  # Scale resistance before returning the number of 1's
+  # XXX resist = startingFitness + (resist/total.genes)*(1 - startingFitness)
+  resist = (resist/total.genes)
+  return(resist)
+}
+
+
+#
+# # Quantify Resistance
+# getResistance0 <- function(gtype, Nl, Ng) {
+#
+#   if(length(Nl) != length(Ng))
+#     stop("Number of sections in regions and loci are different!")
+#
+#   sections <- length(Nl)
+#   Ngl = Ng * Nl
+#   starts <- c(1, cumsum(Ngl)+1)  # cumulative sum for loci
+#   mutated.genes = 0
+#   for(i in 1:sections) {
+#     mutated.genes = mutated.genes + sumSection(gtype[starts[i]:(starts[i+1]-1)], Ng[i], Nl[i])
+#   }
+#
+#   # Scale resistance before returning the number of 1's
+#   return(mutated.genes/sum(Ng))
+# }
 
