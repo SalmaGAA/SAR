@@ -1,8 +1,8 @@
 #' @title Construction of Bacterial Population
 #'
-#' @author Ahmad Abdel-Azim \email {agabdel.azim@gmail.com}
-#' @author Salma Abdel-Azim \email {salma.abdelazim@gmail.com}
-#' @author Gamal Abdel-Azim \email {gamal.azim@gmail.com}
+#' @author Ahmad Abdel-Azim \email{agabdel.azim@gmail.com}
+#' @author Salma Abdel-Azim \email{salma.abdelazim@gmail.com}
+#' @author Gamal Abdel-Azim \email{gamal.azim@gmail.com}
 #'
 #' @name constructPopulation
 #'

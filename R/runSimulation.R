@@ -1,9 +1,9 @@
 #' @title Simulation of Ampicillin Resistance in Staphylococcus aureus over Multiple Exposures
 #'
 #'
-#' @author Ahmad Abdel-Azim \email {agabdel.azim@gmail.com}
-#' @author Salma Abdel-Azim \email {salma.abdelazim@gmail.com}
-#' @author Gamal Abdel-Azim \email {gamal.azim@gmail.com}
+#' @author Ahmad Abdel-Azim \email{agabdel.azim@gmail.com}
+#' @author Salma Abdel-Azim \email{salma.abdelazim@gmail.com}
+#' @author Gamal Abdel-Azim \email{gamal.azim@gmail.com}
 #'
 #' @name runSimulation
 #'
@@ -40,6 +40,8 @@ runSimulation <- function(gen.interval = 60,
   # Construct Population --
   P <- constructPopulation(Psize, Nl, Ng, startingFitness)
 
+  sequencedGenes <- rep(1:sum(Ng), rep(Nl, Ng))
+  seqSec <- rep(1:length(Ng), Ng)
   gen.number = round((24*60)/gen.interval)
   sections = length(Nl)
   gen.results = matrix(0, nrow=nDays*gen.number, ncol=(2+sections))
@@ -50,12 +52,14 @@ runSimulation <- function(gen.interval = 60,
       P <- t(apply(P, 1, function(x) mutate(x, Rm = Rm)))
 
       # Get resistance for each cell (row) in the population (P)
-      Rd = apply(P, 1, function(x) getResistance(x, Nl=Nl, Ng=Ng))
+      #Rd = apply(P, 1, function(x) getResistance(x, Nl=Nl, Ng=Ng))
+      Rd = apply(P, 1, function(x) getResistance.internal(x, sequencedGenes))
 
       # Get resistance of each section
-      sectionRd = t(apply(P, 1, function(x) getSectionResistance(x, Nl=Nl, Ng=Ng)))
+      #sectionRd = t(apply(P, 1, function(x) getSectionResistance(x, Nl=Nl, Ng=Ng)))
+      sectionRd = t(apply(P, 1, function(x) getSectionResistance.internal(x, sequencedGenes, seqSec)))
 
-      # Reproduce the population P based on a vector of ftness values in Rd
+      # Reproduce the population P based on a vector of fitness values in Rd
       P = cellDivide(P, Rd, maxPsize, thr=thr)
 
       # Report generational statistics

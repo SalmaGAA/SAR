@@ -1,8 +1,8 @@
 #' @title Measure Resistance of Each Section of a Bacterial Genome
 #'
-#' @author Ahmad Abdel-Azim \email {agabdel.azim@gmail.com}
-#' @author Salma Abdel-Azim \email {salma.abdelazim@gmail.com}
-#' @author Gamal Abdel-Azim \email {gamal.azim@gmail.com}
+#' @author Ahmad Abdel-Azim \email{agabdel.azim@gmail.com}
+#' @author Salma Abdel-Azim \email{salma.abdelazim@gmail.com}
+#' @author Gamal Abdel-Azim \email{gamal.azim@gmail.com}
 #'
 #' @name getSectionResistance
 #'
@@ -73,6 +73,12 @@ getSectionResistance <- function(gtype, Nl, Ng) {
   # return fraction of fully mutated genes per section
   return(sectionResist/Ng)
 }
+
+# Internal version for speed
+getSectionResistance.internal <- function(gtype, sequencedGenes, seqSec) {
+  return(tapply(tapply(gtype, sequencedGenes, prod), seqSec, sum)/Ng)
+}
+
 
 #' @examples
 #' sectionResist <- t(apply(P, 1, function(x) getSectionResistance(x, Nl = c(1, 2, 3), Ng = c(10, 10, 10))))

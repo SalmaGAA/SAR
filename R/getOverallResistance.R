@@ -1,8 +1,8 @@
 #' @title Measure Overall Resistance of Bacterial Population
 #'
-#' @author Ahmad Abdel-Azim \email {agabdel.azim@gmail.com}
-#' @author Salma Abdel-Azim \email {salma.abdelazim@gmail.com}
-#' @author Gamal Abdel-Azim \email {gamal.azim@gmail.com}
+#' @author Ahmad Abdel-Azim \email{agabdel.azim@gmail.com}
+#' @author Salma Abdel-Azim \email{salma.abdelazim@gmail.com}
+#' @author Gamal Abdel-Azim \email{gamal.azim@gmail.com}
 #'
 #' @name getOverallResistance
 #'
@@ -58,12 +58,15 @@ getResistance <- function(gtype, Nl, Ng) {
   mutated.genes = 0
   for(i in 1:sections) {
     mutated.genes = mutated.genes + sumSection(gtype[starts[i]:(starts[i+1]-1)], Ng[i], Nl[i])
-  }
-
+    }
   # Scale resistance before returning the number of 1's
   return(mutated.genes/sum(Ng))
 }
 
+# Internal version for speed
+getResistance.internal <- function(gtype, sequencedGenes) {
+  return(sum(tapply(gtype, sequencedGenes, prod))/sum(Ng))
+}
 
 
 #' @examples
