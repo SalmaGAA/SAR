@@ -18,9 +18,9 @@ getResistance(gtype, Nl, Ng)
 TO BE ADDED LATER
 }
 \author{
-Ahmad Abdel-Azim \email {agabdel.azim@gmail.com}
+Ahmad Abdel-Azim \email{agabdel.azim@gmail.com}
 
-Salma Abdel-Azim \email {salma.abdelazim@gmail.com}
+Salma Abdel-Azim \email{salma.abdelazim@gmail.com}
 
-Gamal Abdel-Azim \email {gamal.azim@gmail.com}
+Gamal Abdel-Azim \email{gamal.azim@gmail.com}
 }

@@ -32,11 +32,11 @@ ADD LATER
 plotScenario(scenario = scenarioSimulate, gen.pd = 24, nDay = 20, Nl = c(1, 2, 3), Ng = c(10, 10, 10), ylim = c(0.5, 0.85))
 }
 \author{
-Ahmad Abdel-Azim \email {agabdel.azim@gmail.com}
+Ahmad Abdel-Azim \email{agabdel.azim@gmail.com}
 
-Salma Abdel-Azim \email {salma.abdelazim@gmail.com}
+Salma Abdel-Azim \email{salma.abdelazim@gmail.com}
 
-Gamal Abdel-Azim \email {gamal.azim@gmail.com}
+Gamal Abdel-Azim \email{gamal.azim@gmail.com}
 }
 \keyword{SAR}
 \keyword{antibiotic}

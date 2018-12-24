@@ -53,7 +53,7 @@ runSimulation <- function(gen.interval = 60,
 
       # Get resistance for each cell (row) in the population (P)
       #Rd = apply(P, 1, function(x) getResistance(x, Nl=Nl, Ng=Ng))
-      Rd = apply(P, 1, function(x) getResistance.internal(x, sequencedGenes))
+      Rd = apply(P, 1, function(x) getResistance.internal(x, sequencedGenes, Ng = Ng))
 
       # Get resistance of each section
       #sectionRd = t(apply(P, 1, function(x) getSectionResistance(x, Nl=Nl, Ng=Ng)))

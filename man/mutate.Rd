@@ -34,11 +34,11 @@ To apply mutate to each row of a bacterial population matrix:
 P2 <- t(apply(P, 1, function(x) mutate(x, Rm = 0.05)))
 }
 \author{
-Ahmad Abdel-Azim \email {agabdel.azim@gmail.com}
+Ahmad Abdel-Azim \email{agabdel.azim@gmail.com}
 
-Salma Abdel-Azim \email {salma.abdelazim@gmail.com}
+Salma Abdel-Azim \email{salma.abdelazim@gmail.com}
 
-Gamal Abdel-Azim \email {gamal.azim@gmail.com}
+Gamal Abdel-Azim \email{gamal.azim@gmail.com}
 }
 \keyword{SAR}
 \keyword{antibiotic}

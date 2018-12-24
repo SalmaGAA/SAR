@@ -64,7 +64,7 @@ getResistance <- function(gtype, Nl, Ng) {
 }
 
 # Internal version for speed
-getResistance.internal <- function(gtype, sequencedGenes) {
+getResistance.internal <- function(gtype, sequencedGenes, Ng) {
   return(sum(tapply(gtype, sequencedGenes, prod))/sum(Ng))
 }
 
