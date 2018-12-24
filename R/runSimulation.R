@@ -22,6 +22,20 @@
 #' @param maxPsize The maximum population size that the bacterial population will reach within a day. Defaults to 2000.
 #'
 #'
+
+
+#'@example
+#'x <- runSimulation()
+#'x
+
+#'
+#'@keywords SAR
+#'@keywords resistance
+#'@keywords antibiotic
+#'@keywords simulation
+#'
+
+
 #' @export
 runSimulation <- function(gen.interval = 60,
                           Rm = 0.001,
@@ -57,7 +71,7 @@ runSimulation <- function(gen.interval = 60,
 
       # Get resistance of each section
       #sectionRd = t(apply(P, 1, function(x) getSectionResistance(x, Nl=Nl, Ng=Ng)))
-      sectionRd = t(apply(P, 1, function(x) getSectionResistance.internal(x, sequencedGenes, seqSec)))
+      sectionRd = t(apply(P, 1, function(x) getSectionResistance.internal(x, sequencedGenes, seqSec, Ng = Ng)))
 
       # Reproduce the population P based on a vector of fitness values in Rd
       P = cellDivide(P, Rd, maxPsize, thr=thr)
@@ -96,13 +110,3 @@ nextDaySample <- function(P, Rd, Psize) {
   include <- sample.int(length(Rd), size=Psize, prob=Rd)
   return(P[include,])
 }
-
-#'@example
-#'x <- runSimulation()
-#'x
-#'
-#'@keywords SAR
-#'@keywords resistance
-#'@keywords antibiotic
-#'@keywords simulation
-#'

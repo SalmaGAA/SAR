@@ -15,6 +15,41 @@
 #'@description TO BE ADDED LATER
 
 
+#' @examples
+#' resist <- apply(P, 1, function(x) getResistance(x, Nl = c(1, 2, 3), Ng= c(10, 10, 10)))
+#' resist
+#'
+#'
+#' @keywords SAR
+#' @keywords resistance
+#' @keywords antibiotic
+#' @keywords simulation
+
+
+#' @export
+# Quantify Resistance
+getResistance <- function(gtype, Nl, Ng) {
+
+  if(length(Nl) != length(Ng))
+    stop("Number of sections in regions and loci are different!")
+
+  sections <- length(Nl)
+  Ngl = Ng * Nl
+  starts <- c(1, cumsum(Ngl)+1)  # cumulative sum for loci
+  mutated.genes = 0
+  for(i in 1:sections) {
+    mutated.genes = mutated.genes + sumSection(gtype[starts[i]:(starts[i+1]-1)], Ng[i], Nl[i])
+    }
+  # Scale resistance before returning the number of 1's
+  return(mutated.genes/sum(Ng))
+}
+
+# Internal version for speed
+getResistance.internal <- function(gtype, sequencedGenes, Ng) {
+  return(sum(tapply(gtype, sequencedGenes, prod))/sum(Ng))
+}
+
+
 # # Quanify Resistance
 # getResistance0 <- function(gtype, Nl, Ng) {
 #
@@ -44,38 +79,3 @@
 #   return(resist)
 # }
 #
-
-#' @export
-# Quantify Resistance
-getResistance <- function(gtype, Nl, Ng) {
-
-  if(length(Nl) != length(Ng))
-    stop("Number of sections in regions and loci are different!")
-
-  sections <- length(Nl)
-  Ngl = Ng * Nl
-  starts <- c(1, cumsum(Ngl)+1)  # cumulative sum for loci
-  mutated.genes = 0
-  for(i in 1:sections) {
-    mutated.genes = mutated.genes + sumSection(gtype[starts[i]:(starts[i+1]-1)], Ng[i], Nl[i])
-    }
-  # Scale resistance before returning the number of 1's
-  return(mutated.genes/sum(Ng))
-}
-
-# Internal version for speed
-getResistance.internal <- function(gtype, sequencedGenes, Ng) {
-  return(sum(tapply(gtype, sequencedGenes, prod))/sum(Ng))
-}
-
-
-#' @examples
-#' resist <- apply(P, 1, function(x) getResistance(x, Nl = c(1, 2, 3), Ng= c(10, 10, 10)))
-#' resist
-#'
-#'
-#' @keywords SAR
-#' @keywords resistance
-#' @keywords antibiotic
-#' @keywords simulation
-

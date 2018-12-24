@@ -16,6 +16,41 @@
 #' @param Rd ADD LATER
 #'
 #'
+
+
+#' @examples
+#' P2 <- cellDivide(P, Rd = 0.2, maxPsize = 500, thr = 0.51)
+#'
+#' @keywords SAR
+#' @keywords resistance
+#' @keywords antibiotic
+#' @keywords simulation
+
+
+
+#' @export
+cellDivide <- function(P, Rd, maxPsize, thr) {
+
+  if(length(Rd) != nrow(P))
+    stop("Number of elements in Rd not equal to number of rows in P")
+
+  included <- (Rd >= thr)
+  Rd <- Rd[included]
+  P <- P[included,]
+  n = length(Rd)
+  x <- runif(min = 0, max = 1, n=n)
+  y <- x <= Rd
+  P <- P[y,]; Rd <- Rd[y]
+  P <- rbind(P, P); Rd <- c(Rd, Rd)
+
+  # shuffle if nrows <= maxPsize, otherwise pick 'the best' maxPsize!
+  if(nrow(P) <= maxPsize)
+    P <- P[sample(1:nrow(P), size = nrow(P)),]
+  else P <- P[sample(1:nrow(P), size = maxPsize, prob=(Rd/sum(Rd))),]
+  P
+}
+
+
 #' # A function to reproduce the population by cell fission/division
 #' cellDivide0 <- function(P, Rd) {
 #'
@@ -47,35 +82,3 @@
 #'   P <- P[sample(1:nrow(P), size = nrow(P)),]
 #'   P
 #' }
-
-
-#' @export
-cellDivide <- function(P, Rd, maxPsize, thr) {
-
-  if(length(Rd) != nrow(P))
-    stop("Number of elements in Rd not equal to number of rows in P")
-
-  included <- (Rd >= thr)
-  Rd <- Rd[included]
-  P <- P[included,]
-  n = length(Rd)
-  x <- runif(min = 0, max = 1, n=n)
-  y <- x <= Rd
-  P <- P[y,]; Rd <- Rd[y]
-  P <- rbind(P, P); Rd <- c(Rd, Rd)
-
-  # shuffle if nrows <= maxPsize, otherwise pick 'the best' maxPsize!
-  if(nrow(P) <= maxPsize)
-    P <- P[sample(1:nrow(P), size = nrow(P)),]
-  else P <- P[sample(1:nrow(P), size = maxPsize, prob=(Rd/sum(Rd))),]
-  P
-}
-
-
-#' @examples
-#' P2 <- cellDivide(P, Rd = 0.2, maxPsize = 500, thr = 0.51)
-#'
-#' @keywords SAR
-#' @keywords resistance
-#' @keywords antibiotic
-#' @keywords simulation

@@ -9,40 +9,7 @@ cellDivide(P, Rd, maxPsize, thr)
 \arguments{
 \item{P}{The population of bacteria arranged in a two-dimensional matrix of 0 and 1 values, where 0 represents naive loci and 1 represents mutated loci.}
 
-\item{Rd}{ADD LATER
-
-
-# A function to reproduce the population by cell fission/division
-cellDivide0 <- function(P, Rd) {
-
-  if(length(Rd) != nrow(P))
-    stop("Number of elements in Rd != number of rows in P")
-
-  n = length(Rd)
-  x <- runif(min = 0, max = 1, n=n)
-  y <- x <= Rd
-  P <- P[y,]
-  P <- rbind(P, P)
-  P <- P[sample(1:nrow(P), size = nrow(P)),]
-  P
-}
-
-
-cellDivide1 <- function(P, Rd, sel.intensity = .5) {
-
-  if(length(Rd) != nrow(P))
-    stop("Number of elements in Rd != number of rows in P")
-
-  # Use order()
-  x <- order(Rd)
-  at = round((1-sel.intensity)*length(Rd)) + 1
-  y <- Rd >= Rd[x[at]]
-
-  P <- P[y,]
-  P <- rbind(P, P)
-  P <- P[sample(1:nrow(P), size = nrow(P)),]
-  P
-}}
+\item{Rd}{ADD LATER}
 
 \item{maxPsize}{The maximum population size that the bacterial population will reach within a day. Defaults to 2000.}
 
@@ -51,6 +18,10 @@ cellDivide1 <- function(P, Rd, sel.intensity = .5) {
 \description{
 Functions to manipulate individual operations of division within a cell population.
 }
+\examples{
+P2 <- cellDivide(P, Rd = 0.2, maxPsize = 500, thr = 0.51)
+
+}
 \author{
 Ahmad Abdel-Azim \email{agabdel.azim@gmail.com}
 
@@ -58,3 +29,7 @@ Salma Abdel-Azim \email{salma.abdelazim@gmail.com}
 
 Gamal Abdel-Azim \email{gamal.azim@gmail.com}
 }
+\keyword{SAR}
+\keyword{antibiotic}
+\keyword{resistance}
+\keyword{simulation}

@@ -13,6 +13,41 @@
 #' @param gtype ADD LATER
 #'
 #'@description TO BE ADDED LATER
+#'
+
+#' @examples
+#' sectionResist <- t(apply(P, 1, function(x) getSectionResistance(x, Nl = c(1, 2, 3), Ng = c(10, 10, 10))))
+#' sectionResist
+#'
+#' @keywords SAR
+#' @keywords resistance
+#' @keywords antibiotic
+#' @keywords simulation
+#'
+
+#' @export
+# More efficient version
+getSectionResistance <- function(gtype, Nl, Ng) {
+
+  if(length(Nl) != length(Ng))
+    stop("Number of sections in regions and loci are different!")
+
+  sections <- length(Nl)
+  Ngl = Ng * Nl
+  starts <- c(1, cumsum(Ngl)+1)  # cumulative sum for loci
+  sectionResist <- numeric(sections)
+  for(i in 1:sections) {
+    sectionResist[i] = sumSection(gtype[starts[i]:(starts[i+1]-1)], Ng[i], Nl[i])
+  }
+
+  # return fraction of fully mutated genes per section
+  return(sectionResist/Ng)
+}
+
+# Internal version for speed
+getSectionResistance.internal <- function(gtype, sequencedGenes, seqSec, Ng) {
+  return(tapply(tapply(gtype, sequencedGenes, prod), seqSec, sum)/Ng)
+}
 
 
 # # Receive a vector of locus genotypes to calculate section ressiatnce values
@@ -54,38 +89,4 @@
 #   return(sectionResist/Ng)
 # }
 #
-
-#' @export
-# More efficient version
-getSectionResistance <- function(gtype, Nl, Ng) {
-
-  if(length(Nl) != length(Ng))
-    stop("Number of sections in regions and loci are different!")
-
-  sections <- length(Nl)
-  Ngl = Ng * Nl
-  starts <- c(1, cumsum(Ngl)+1)  # cumulative sum for loci
-  sectionResist <- numeric(sections)
-  for(i in 1:sections) {
-    sectionResist[i] = sumSection(gtype[starts[i]:(starts[i+1]-1)], Ng[i], Nl[i])
-  }
-
-  # return fraction of fully mutated genes per section
-  return(sectionResist/Ng)
-}
-
-# Internal version for speed
-getSectionResistance.internal <- function(gtype, sequencedGenes, seqSec) {
-  return(tapply(tapply(gtype, sequencedGenes, prod), seqSec, sum)/Ng)
-}
-
-
-#' @examples
-#' sectionResist <- t(apply(P, 1, function(x) getSectionResistance(x, Nl = c(1, 2, 3), Ng = c(10, 10, 10))))
-#' sectionResist
-#'
-#' @keywords SAR
-#' @keywords resistance
-#' @keywords antibiotic
-#' @keywords simulation
 
