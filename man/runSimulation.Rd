@@ -2,7 +2,7 @@
 % Please edit documentation in R/runSimulation.R
 \name{runSimulation}
 \alias{runSimulation}
-\title{Simulation of Ampicillin Resistance in Staphylococcus aureus over Multiple Exposures}
+\title{Simulation of Antibiotic Resistance in Bacteria over Multiple Exposures}
 \usage{
 runSimulation(gen.interval, Rm, Ng, Nl, Psize, startingFitness, thr, nDays, maxPsize)
 }

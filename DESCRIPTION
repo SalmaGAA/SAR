@@ -1,6 +1,6 @@
 Package: SAR
 Type: Package
-Title: Simulation of Ampicillin Resistance in Staphylococcus aureus Bacteria Over Multiple Exposures
+Title: Simulation of Antibiotic Resistance in Bacteria Populations Over Multiple Exposures
 Version: 0.1.0
 Author: c(person("Ahmad", "Adbel-Azim" email = "agabdel.azim@gmail.com", role = ["aut", "cre"]),
           person("Salma", "Abdel-Azim", email = "salma.abdelazim@gmail.com", role = ["aut"]),
@@ -10,5 +10,5 @@ Description: This is the SAR simulation package.
 License: MIT
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 Suggests: testthat

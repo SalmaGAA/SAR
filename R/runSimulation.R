@@ -1,4 +1,4 @@
-#' @title Simulation of Ampicillin Resistance in Staphylococcus aureus over Multiple Exposures
+#' @title Simulation of Antibiotic Resistance in Bacteria over Multiple Exposures
 #'
 #'
 #' @author Ahmad Abdel-Azim \email{agabdel.azim@gmail.com}
