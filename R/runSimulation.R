@@ -25,7 +25,7 @@
 
 
 #'@example
-#'x <- runSimulation()
+#'x <- runSimulation(Ng = c(6, 10, 12), Nl = c(1, 6, 10))
 #'x
 
 #'
@@ -39,8 +39,8 @@
 #' @export
 runSimulation <- function(gen.interval = 60,
                           Rm = 0.001,
-                          Ng = c(6, 10, 12),
-                          Nl = c(1, 6, 10),
+                          Ng,
+                          Nl,
                           Psize = 300,
                           startingFitness = 0.51,
                           thr = .51,
