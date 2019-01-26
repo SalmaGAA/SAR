@@ -26,7 +26,7 @@
 #' Bacteria are simulated to be cultured for 24 hours under environmental stress. The argument \code{thr} represents the antibiotic stress placed on a bacterial culture. Bacteria that do not meet this threshold (i.e. bacteria that have not mutated enough in each generation) are barred from proliferation, to represent antibitic stress. In order to avoid population crashes, \code{startingFitness} should be greater than \code{thr}. \cr\cr
 #' The argument \code{maxPsize} is set to adhere to the RAM limitations on standard computer machines used to run this simulation.
 
-#'@return ADD LATER
+#'@return \code{runSimulation} returns an object of class matrix with the number of columns equal to 2 plus the number of regions included in the bacterial genome, and the number of rows equal to the number of generations simulated. With 24 hours in a culture day, the number of generations simulated can be calculated as 24 hours multiplied by 60 minutes and divided by \code{gen.interval}. The first column of the returned matrix includes the population size following each generation. The second column provides the overall fitness of the bacterial population following each generation. Subsequent columns provide the fitness of each region from 1 to n regions.
 
 #'@example
 #'runSimulation(Ng = c(6, 10, 12), Nl = c(1, 6, 10))
