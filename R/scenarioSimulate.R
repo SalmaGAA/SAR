@@ -6,29 +6,26 @@
 #'
 #' @name scenarioSimulate
 #'
-#' @usage scenarioSimulate(Psize, Nl, Ng, runs, nDays, gen.interval, Rm, startingFitness, thr, maxPsize)
+#' @usage scenarioSimulate(Nl, Ng, Psize = 300, runs = 10, nDays = 15, gen.interval = 60, Rm = 0.001, startingFitness = 0.51, thr = 0.51, maxPsize = 2000)
 #'
-#' @param Psize Starting popultaion size. Defaults to 300.
-#' @param Nl Number of loci per gene per section. One-dimensional array of length equal to number of sections. Defaults to c(1, 6, 10).
-#' @param Ng Number of genes per section. One-dimensional array of length equal to number of sections. Defaults to c(6, 10, 12).
-#' @param runs ADD LATER
-#' @param nDays ADD LATER
-#' @param gen.interval ADD LATER
-#' @param Rm ADD LATER
-#' @param startingFitness Starting population fitness, represnted by the proportion of mutated bacterial cells in the population. Defaults to 0.51.
-#' @param thr ADD LATER
-#' @param maxPsize ADD LATER
+#' @param gen.interval generation interval time, in minutes. Defaults to 60 minutes.
+#' @param Rm rate of mutation in bacterial population matrix. Defaults to 0.001.
+#' @param Ng one-dimensional array specifying the number of genes within each section of bacterial genome. Length of array should equal number of sections in bacterial genome.
+#' @param Nl one-dimensional array specifying the number of mutation sites on each gene along the bacterial genome. Length of array should equal number of sections in bacterial genome.
+#' @param Psize starting popultaion size. Defaults to 300.
+#' @param startingFitness starting population fitness. Defaults to 0.51.
+#' @param thr represents the threshold of fitness which bacteria must meet in order to survive antibiotic stress and proliferate. Bacteria with an overall fitness below this specified threshold do not reproduce to the next generation. Defaults to 0.51.
+#' @param nDays number of culture days to be simulated. Defaults to 15.
+#' @param maxPsize maximum population size that the bacterial population will be able to reach within a day. Defaults to 2000.
+#' @param runs number of times that the simulation will be looped. Defaults to 10.
 #'
-#' @description ADD LATER
-#'
-#'
-#' @details ADD LATER
+#' @description \code{scenarioSimulate} loops the \code{runSimulation} function for a specified amount of runs. The purpose fo such a function is to provide accuracy to SAR through replication.
 #'
 #'
 #' @return ADD LATER
 #'
 #'
-#' @examples x <- scenarioSimulate()
+#' @examples x <- scenarioSimulate(Nl = c(1, 6, 10), Ng = c(6, 10, 12))
 #'
 #'
 #' @keywords SAR
@@ -37,7 +34,7 @@
 #' @keywords simulation
 
 #' @export
-scenarioSimulate <- function(Psize = 300, Nl = c(1, 6, 10), Ng = c(6, 10, 12), runs = 10, nDays = 20,
+scenarioSimulate <- function(Psize = 300, runs = 10, nDays = 15, Nl, Ng,
                              gen.interval = 60, Rm = 0.01, startingFitness = 0.51, thr = .51, maxPsize = 2000) {
 
   if(length(Nl) != length(Ng))

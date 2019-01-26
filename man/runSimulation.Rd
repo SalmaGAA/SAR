@@ -4,29 +4,37 @@
 \alias{runSimulation}
 \title{Simulation of Antibiotic Resistance in Bacteria over Multiple Exposures}
 \usage{
-runSimulation(gen.interval, Rm, Ng, Nl, Psize, startingFitness, thr, nDays, maxPsize)
+runSimulation(Ng, Nl, gen.interval = 60, Rm = 0.001, Psize = 300, startingFitness = 0.51, thr = 0.51, nDays = 15, maxPsize = 2000)
 }
 \arguments{
-\item{gen.interval}{Generation interval in minutes. Defaults to 60 minutes.}
+\item{gen.interval}{generation interval time, in minutes. Defaults to 60 minutes.}
 
-\item{Rm}{Rate of mutation in bacterial population. Defaults to 0.001.}
+\item{Rm}{rate of mutation in bacterial population matrix. Defaults to 0.001.}
 
-\item{Ng}{Number of genes per section. One-dimensional array of length equal to number of sections. Defaults to c(6, 10, 12).}
+\item{Ng}{one-dimensional array specifying the number of genes within each section of bacterial genome. Length of array should equal number of sections in bacterial genome.}
 
-\item{Nl}{Number of loci per gene per section. One-dimensional array of length equal to number of sections. Defaults to c(1, 6, 10).}
+\item{Nl}{one-dimensional array specifying the number of mutation sites on each gene along the bacterial genome. Length of array should equal number of sections in bacterial genome.}
 
-\item{Psize}{Starting popultaion size. Defaults to 300.}
+\item{Psize}{starting popultaion size. Defaults to 300.}
 
-\item{startingFitness}{Starting population fitness. Defaults to 0.51.}
+\item{startingFitness}{starting population fitness. Defaults to 0.51.}
 
-\item{thr}{Bacteria with an overall fitness below this specified threshold do not reproduce to the next generation. Defaults to 0.51.}
+\item{thr}{represents the threshold of fitness which bacteria must meet in order to survive antibiotic stress and proliferate. Bacteria with an overall fitness below this specified threshold do not reproduce to the next generation. Defaults to 0.51.}
 
-\item{nDays}{Number of days that the bacterial population will be treated with ampicillin. Defaults to 15.}
+\item{nDays}{number of culture days to be simulated. Defaults to 15.}
 
-\item{maxPsize}{The maximum population size that the bacterial population will reach within a day. Defaults to 2000.}
+\item{maxPsize}{maximum population size that the bacterial population will be able to reach within a day. Defaults to 2000.}
+}
+\value{
+ADD LATER
 }
 \description{
-TO BE ADDED LATER
+\code{runSimulation} is used to stochastically simulate the growth of bacteria while under antibiotic stress in an effort to investigate the pattern of resistance in bacteria. The levels of complexity within each region of the bacterial genome can be varied to examine the progression of fitness within a population as well as the trend of the overall growth of bacteria in a culture.
+}
+\details{
+The \code{runSimulation} function was developed to allow for the investigation of the pattern of fitness development and population growth of bacteria cultured over multiple exposures of antibiotic stress. As mutagenic compounds, antibiotics induce mutations within a bacterial population, which leads to a rapid increase in the fitness of a bacteria. By varing the \code{Nl} and \code{Ng} arguments, the complexity of a bacterial genome can be varied, and the effect such a change will have on a bacterial population can be examined. \cr\cr
+Bacteria are simulated to be cultured for 24 hours under environmental stress. The argument \code{thr} represents the antibiotic stress placed on a bacterial culture. Bacteria that do not meet this threshold (i.e. bacteria that have not mutated enough in each generation) are barred from proliferation, to represent antibitic stress. In order to avoid population crashes, \code{startingFitness} should be greater than \code{thr}. \cr\cr
+The argument \code{maxPsize} is set to adhere to the RAM limitations on standard computer machines used to run this simulation.
 }
 \author{
 Ahmad Abdel-Azim \email{agabdel.azim@gmail.com}
