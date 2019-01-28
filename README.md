@@ -18,6 +18,7 @@ Bacteria are simulated to be cultured for 24 hours under environmental stress. A
 \
 **Example of *runSimulation* function:**
 ```r
+# Run function with the following arguments, 
 runSimulation(Ng = c(2, 10, 15), 
               Nl = c(1, 6, 10), 
               gen.interval = 480, 
@@ -28,22 +29,24 @@ runSimulation(Ng = c(2, 10, 15),
               nDays = 2, 
               maxPsize = 2000)
 
-# Finished gen:  1 of day 1 : 358 0.6028395 0.6333333 0.6013333 0.5997778
-# Finished gen:  2 of day 1 : 428 0.6059383 0.674581 0.601676 0.5996276
-# Finished gen:  3 of day 1 : 538 0.6089477 0.7219626 0.5950935 0.6031153
-#  Finished day 1
+# Function Output is,
 
-# Finished gen:  1 of day 2 : 366 0.6104938 0.765 0.5866667 0.6057778
-# Finished gen:  2 of day 2 : 440 0.6134386 0.7868852 0.5939891 0.6032787
-# Finished gen:  3 of day 2 : 564 0.6159091 0.8056818 0.5920455 0.6065152
-#  Finished day 2
+  Finished gen:  1 of day 1 : 358 0.6028395 0.6333333 0.6013333 0.5997778
+  Finished gen:  2 of day 1 : 428 0.6059383 0.674581 0.601676 0.5996276
+  Finished gen:  3 of day 1 : 538 0.6089477 0.7219626 0.5950935 0.6031153
+  Finished day 1
 
-#      [,1]      [,2]      [,3]      [,4]      [,5]
-# [1,]  358 0.6028395 0.6333333 0.6013333 0.5997778
-# [2,]  428 0.6059383 0.6745810 0.6016760 0.5996276
-# [3,]  538 0.6089477 0.7219626 0.5950935 0.6031153
-# [4,]  366 0.6104938 0.7650000 0.5866667 0.6057778
-# [5,]  440 0.6134386 0.7868852 0.5939891 0.6032787
-# [6,]  564 0.6159091 0.8056818 0.5920455 0.6065152
+  Finished gen:  1 of day 2 : 366 0.6104938 0.765 0.5866667 0.6057778
+  Finished gen:  2 of day 2 : 440 0.6134386 0.7868852 0.5939891 0.6032787
+  Finished gen:  3 of day 2 : 564 0.6159091 0.8056818 0.5920455 0.6065152
+  Finished day 2
+
+       [,1]      [,2]      [,3]      [,4]      [,5]
+  [1,]  358 0.6028395 0.6333333 0.6013333 0.5997778
+  [2,]  428 0.6059383 0.6745810 0.6016760 0.5996276
+  [3,]  538 0.6089477 0.7219626 0.5950935 0.6031153
+  [4,]  366 0.6104938 0.7650000 0.5866667 0.6057778
+  [5,]  440 0.6134386 0.7868852 0.5939891 0.6032787
+  [6,]  564 0.6159091 0.8056818 0.5920455 0.6065152
 ```
 As the simulation progresses through bacterial generations, its status will be printed. The population size, the fitness of each region, and the overall fitness of the population will be printed following each generation. After completion of the simulation, a matrix will be outputted, where the first column represents the population size, the second column represents overall population fitness, and subsequent columns will represent section fitness in their order of input. Each row represents a generation simulated. 
