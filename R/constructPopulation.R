@@ -77,9 +77,11 @@ setFitness <- function(bCell, Nl, Ng) {
   sections <- length(Nl)
   rows <- cumsum(Ng)  # 10  20  30
   rrows <- rep(1:rows[1], each = Nl[1])
-  for(i in 2:sections)
-    rrows <- c(rrows, rep((rows[i-1]+1):(rows[i]), each = Nl[i]))
-
+  if(sections > 1) {
+    for(i in 2:sections){
+      rrows <- c(rrows, rep((rows[i-1]+1):(rows[i]), each = Nl[i]))
+      }
+  }
   total.genes <- sum(Ng)
   Z <- diag(total.genes)
   Z <- Z[rrows,]
