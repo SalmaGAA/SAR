@@ -18,7 +18,15 @@ Bacteria are simulated to be cultured for 24 hours under environmental stress. A
 \
 **Example of *runSimulation* function:**
 ```r
-runSimulation(Ng = c(2, 10, 15), Nl = c(1, 6, 10), gen.interval = 480, Rm = 0.1, Psize = 300, startingFitness = 0.60, thr = 0.51, nDays = 2, maxPsize = 2000)
+runSimulation(Ng = c(2, 10, 15), 
+              Nl = c(1, 6, 10), 
+              gen.interval = 480, 
+              Rm = 0.1, 
+              Psize = 300, 
+              startingFitness = 0.60, 
+              thr = 0.51, 
+              nDays = 2, 
+              maxPsize = 2000)
 
 # Finished gen:  1 of day 1 : 358 0.6028395 0.6333333 0.6013333 0.5997778
 # Finished gen:  2 of day 1 : 428 0.6059383 0.674581 0.601676 0.5996276
