@@ -11,7 +11,30 @@
   3.	install_github("SalmaGAA/SAR")
   4.	library(SAR)
 
-# SAR Quickstart: How to Use *runSimulation()* to Study Bacterial Populations Under Antibiotic Stress 
+# SAR Quickstart: How to Use *runSimulation()* to Study Bacterial Populations Under Antibiotic Stress
 The *runSimulation* function was developed to allow for the investigation of the pattern of fitness development and population growth of bacteria cultured over multiple exposures to antibiotic stress. As mutagenic compounds, antibiotics induce mutations within a bacterial population, which leads to a rapid increase in the fitness of such a population. The complexity of a bacterial genome can be varied, by adding mutations sites to several genes, to investigate its effect on bacterial population behaviors and resistance patterns. The developments of fitness in such simple and complex regions of bacterial genomes can also be individually simulated with the *runSimulation* function.\
 \
-Bacteria are simulated to be cultured for 24 hours under environmental stress. A threshold argument is included in the simulation to represent the antibiotic stress placed on a bacterial culture. Bacteria that do not meet this threshold (i.e. bacteria that have not mutated enough in each generation) are barred from proliferation, representing antibiotic stress. This process allows for overall population fitness to increase as only the most mutated bacteria are selected to survive to subsequent generations.
+Bacteria are simulated to be cultured for 24 hours under environmental stress. A threshold argument is included in the simulation to represent the antibiotic stress placed on a bacterial culture. Bacteria that do not meet this threshold (i.e. bacteria that have not mutated enough in each generation) are barred from proliferation, representing antibiotic stress. This process allows for overall population fitness to increase as only the most mutated bacteria are selected to survive to subsequent generations.\
+\
+**Example of runSimulation() function:**\
+```r
+runSimulation(Ng = c(2, 10, 15), Nl = c(1, 6, 10), gen.interval = 480, Rm = 0.1, Psize = 300, startingFitness = 0.60, thr = 0.51, nDays = 2, maxPsize = 2000)
+
+# Finished gen:  1 of day 1 : 358 0.6028395 0.6333333 0.6013333 0.5997778
+# Finished gen:  2 of day 1 : 428 0.6059383 0.674581 0.601676 0.5996276
+# Finished gen:  3 of day 1 : 538 0.6089477 0.7219626 0.5950935 0.6031153
+#  Finished day 1
+
+# Finished gen:  1 of day 2 : 366 0.6104938 0.765 0.5866667 0.6057778
+# Finished gen:  2 of day 2 : 440 0.6134386 0.7868852 0.5939891 0.6032787
+# Finished gen:  3 of day 2 : 564 0.6159091 0.8056818 0.5920455 0.6065152
+#  Finished day 2
+
+#      [,1]      [,2]      [,3]      [,4]      [,5]
+# [1,]  358 0.6028395 0.6333333 0.6013333 0.5997778
+# [2,]  428 0.6059383 0.6745810 0.6016760 0.5996276
+# [3,]  538 0.6089477 0.7219626 0.5950935 0.6031153
+# [4,]  366 0.6104938 0.7650000 0.5866667 0.6057778
+# [5,]  440 0.6134386 0.7868852 0.5939891 0.6032787
+# [6,]  564 0.6159091 0.8056818 0.5920455 0.6065152
+```
