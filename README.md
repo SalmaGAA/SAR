@@ -38,3 +38,4 @@ runSimulation(Ng = c(2, 10, 15), Nl = c(1, 6, 10), gen.interval = 480, Rm = 0.1,
 # [5,]  440 0.6134386 0.7868852 0.5939891 0.6032787
 # [6,]  564 0.6159091 0.8056818 0.5920455 0.6065152
 ```
+As the simulation progresses through bacterial generations, its status will be printed. The population size, the fitness of each region, and the overall fitness of the population will be printed following each generation. After completion of the simulation, a matrix will be outputted, where the first column represents the population size, the second column represents overall population fitness, and subsequent columns will represent section fitness in their order of input. Each row represents a generation simulated. 
