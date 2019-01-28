@@ -16,7 +16,7 @@ The *runSimulation* function was developed to allow for the investigation of the
 \
 Bacteria are simulated to be cultured for 24 hours under environmental stress. A threshold argument is included in the simulation to represent the antibiotic stress placed on a bacterial culture. Bacteria that do not meet this threshold (i.e. bacteria that have not mutated enough in each generation) are barred from proliferation, representing antibiotic stress. This process allows for overall population fitness to increase as only the most mutated bacteria are selected to survive to subsequent generations.\
 \
-**Example of runSimulation() function:**\
+**Example of *runSimulation()* function:**
 ```r
 runSimulation(Ng = c(2, 10, 15), Nl = c(1, 6, 10), gen.interval = 480, Rm = 0.1, Psize = 300, startingFitness = 0.60, thr = 0.51, nDays = 2, maxPsize = 2000)
 
