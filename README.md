@@ -11,7 +11,7 @@
   3.	install_github("SalmaGAA/SAR")
   4.	library(SAR)
 
-# Using the runSimulation function:
+# SAR Quickstart: How to Use *runSimulation()* to Study Bacterial Populations Under Antibiotic Stress 
 The *runSimulation* function was developed to allow for the investigation of the pattern of fitness development and population growth of bacteria cultured over multiple exposures to antibiotic stress. As mutagenic compounds, antibiotics induce mutations within a bacterial population, which leads to a rapid increase in the fitness of such a population. The complexity of a bacterial genome can be varied, by adding mutations sites to several genes, to investigate its effect on bacterial population behaviors and resistance patterns. The developments of fitness in such simple and complex regions of bacterial genomes can also be individually simulated with the *runSimulation* function.\
 \
 Bacteria are simulated to be cultured for 24 hours under environmental stress. A threshold argument is included in the simulation to represent the antibiotic stress placed on a bacterial culture. Bacteria that do not meet this threshold (i.e. bacteria that have not mutated enough in each generation) are barred from proliferation, representing antibiotic stress. This process allows for overall population fitness to increase as only the most mutated bacteria are selected to survive to subsequent generations.
