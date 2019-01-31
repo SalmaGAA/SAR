@@ -7,6 +7,7 @@
 First install devtools and Rtools:
 - Install Rtools from https://cran.r-project.org/bin/windows/Rtools/. This is a windows executable program that you install by clicking on the link and following instructions.
 - To install devtools: ```install.packages("devtools")```\
+\
 Then, run the following in R
 ```r
 library(devtools)
