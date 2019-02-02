@@ -1,6 +1,6 @@
 Package: SAR
 Type: Package
-Title: Simulation of Antibiotic Resistance in Bacteria Populations Over Multiple Exposures
+Title: Simulation of Antibiotic Resistance in Bacterial Populations Over Multiple Exposures
 Version: 0.1.0
 Author: c(person("Ahmad", "Adbel-Azim" email = "agabdel.azim@gmail.com", role = ["aut", "cre"]),
           person("Salma", "Abdel-Azim", email = "salma.abdelazim@gmail.com", role = ["aut"]),
