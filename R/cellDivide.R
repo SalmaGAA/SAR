@@ -16,6 +16,7 @@
 #' @param Rd ADD LATER
 #'
 #'
+#' @details 
 
 
 #' @examples
