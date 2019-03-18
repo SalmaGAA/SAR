@@ -4,7 +4,7 @@
 \alias{scenarioSimulate}
 \title{Simulate an Entire Genome Scenario}
 \usage{
-scenarioSimulate(Nl, Ng, Psize = 300, runs = 10, nDays = 15, gen.interval = 60, Rm = 0.001, startingFitness = 0.51, thr = 0.51, maxPsize = 2000)
+scenarioSimulate(Nl, Ng, Psize, runs, nDays, gen.interval, Rm, startingFitness, thr, maxPsize)
 }
 \arguments{
 \item{Psize}{starting popultaion size. Defaults to 300.}
@@ -28,13 +28,13 @@ scenarioSimulate(Nl, Ng, Psize = 300, runs = 10, nDays = 15, gen.interval = 60, 
 \item{maxPsize}{maximum population size that the bacterial population will be able to reach within a day. Defaults to 2000.}
 }
 \value{
-ADD LATER
+As simulation scenarios progress through bacterial generations, the status of the simulation will be printed. The population size, the fitness of each region, and the overall fitness of the population will be printed following each generation. After completion, \code{scenarioSimulate} returns an object of class array and mode numeric. The resulting array will be 3-dimensional with the number of columns equal to 2 plus the number of regions included in the bacterial genome, and the number of rows equal to the number of generations simulated. With 24 hours in a culture day, the number of generations simulated can be calculated as 24 hours multiplied by 60 minutes and divided by \code{gen.interval}. The first column of the returned array includes the population size following each generation. The second column provides the overall fitness of the bacterial population following each generation. Subsequent columns provide the fitness of each region from 1 to n regions. The third dimension consists of sheets for every simulation run, with the number of sheets in the third dimension equal to the number of runs specified in the \code{runs} parameter.
 }
 \description{
 \code{scenarioSimulate} loops the \code{runSimulation} function for a specified amount of runs. The purpose fo such a function is to provide accuracy to SAR through replication.
 }
 \examples{
-x <- scenarioSimulate(Nl = c(1, 6, 10), Ng = c(6, 10, 12))
+x <- scenarioSimulate(Nl = c(1, 6, 10), Ng = c(6, 10, 12), runs = 10)
 
 
 }
@@ -48,4 +48,5 @@ Gamal Abdel-Azim \email{gamal.azim@gmail.com}
 \keyword{SAR}
 \keyword{antibiotic}
 \keyword{resistance}
+\keyword{scenario}
 \keyword{simulation}

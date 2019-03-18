@@ -7,7 +7,7 @@
 #'
 #' @name runSimulation
 #'
-#' @usage runSimulation(Ng, Nl, gen.interval = 60, Rm = 0.001, Psize = 300, startingFitness = 0.51, thr = 0.51, nDays = 15, maxPsize = 2000)
+#' @usage runSimulation(Ng, Nl, gen.interval, Rm, Psize, startingFitness, thr, nDays, maxPsize)
 #'
 #' @description \code{runSimulation} is used to stochastically simulate the growth of bacteria while under antibiotic stress in an effort to investigate the pattern of resistance in bacteria. The levels of complexity within each region of the bacterial genome can be varied to examine the progression of fitness within a population as well as the trend of the overall growth of bacteria in a culture.
 #'

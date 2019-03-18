@@ -4,7 +4,7 @@
 \alias{runSimulation}
 \title{Simulation of Antibiotic Resistance in Bacteria over Multiple Exposures}
 \usage{
-runSimulation(Ng, Nl, gen.interval = 60, Rm = 0.001, Psize = 300, startingFitness = 0.51, thr = 0.51, nDays = 15, maxPsize = 2000)
+runSimulation(Ng, Nl, gen.interval, Rm, Psize, startingFitness, thr, nDays, maxPsize)
 }
 \arguments{
 \item{gen.interval}{generation interval time, in minutes. Defaults to 60 minutes.}
