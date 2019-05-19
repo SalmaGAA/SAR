@@ -2,14 +2,14 @@
 % Please edit documentation in R/scenarioSimulate.R
 \name{scenarioSimulate}
 \alias{scenarioSimulate}
-\title{Simulate an Entire Genome Scenario}
+\title{Simulation of Antibiotic Resistance in Bacteria over Multiple Exposures}
 \usage{
-scenarioSimulate(Nl, Ng, Psize, runs, nDays, gen.interval, Rm, startingFitness, thr, maxPsize)
+scenarioSimulate(Nl, Ng, Psize = 300, runs = 10, nDays = 15, gen.interval = 60, Rm = 0.001, startingFitness = 0.51, thr = 0.51, maxPsize = 2000)
 }
 \arguments{
 \item{Psize}{starting popultaion size. Defaults to 300.}
 
-\item{runs}{number of times that the simulation will be looped. Defaults to 10.}
+\item{runs}{number of times that the simulation will be repeated. Defaults to 10.}
 
 \item{nDays}{number of culture days to be simulated. Defaults to 15.}
 
@@ -28,10 +28,15 @@ scenarioSimulate(Nl, Ng, Psize, runs, nDays, gen.interval, Rm, startingFitness, 
 \item{maxPsize}{maximum population size that the bacterial population will be able to reach within a day. Defaults to 2000.}
 }
 \value{
-As simulation scenarios progress through bacterial generations, the status of the simulation will be printed. The population size, the fitness of each region, and the overall fitness of the population will be printed following each generation. After completion, \code{scenarioSimulate} returns an object of class array and mode numeric. The resulting array will be 3-dimensional with the number of columns equal to 2 plus the number of regions included in the bacterial genome, and the number of rows equal to the number of generations simulated. With 24 hours in a culture day, the number of generations simulated can be calculated as 24 hours multiplied by 60 minutes and divided by \code{gen.interval}. The first column of the returned array includes the population size following each generation. The second column provides the overall fitness of the bacterial population following each generation. Subsequent columns provide the fitness of each region from 1 to n regions. The third dimension consists of sheets for every simulation run, with the number of sheets in the third dimension equal to the number of runs specified in the \code{runs} parameter.
+As simulation scenarios progress through bacterial generations, the status of the simulation will be printed. The population size, the fitness of each region, and the overall fitness of the population will be printed following each generation. After completion, \code{scenarioSimulate} returns an object of class array and mode numeric. The resulting array will be 3-dimensional with the number of columns equal to 2 plus the number of regions included in the bacterial genome, and the number of rows equal to the number of generations simulated. With 24 hours in a culture day, the number of generations simulated can be calculated as 24 hours multiplied by 60 minutes and divided by \code{gen.interval}. The first column of the returned array includes the population size following each generation. The second column provides the overall fitness of the bacterial population following each generation. Subsequent columns provide the fitness of each region from 1 to n regions. If the argument \code{runs} is set equal to a value greater than 1, the third dimension will consist of sheets for every simulation run, with the number of sheets equal to the number of runs specified in the \code{runs} parameter.
 }
 \description{
-\code{scenarioSimulate} loops the \code{runSimulation} function for a specified amount of runs. The purpose fo such a function is to provide accuracy to SAR through replication.
+\code{scenarioSimulate} is used to stochastically simulate the growth of bacteria while under antibiotic stress in an effort to investigate the pattern of resistance in bacteria. The levels of complexity within each region of the bacterial genome can be varied to examine the progression of fitness within a population as well as the trend of the overall growth of bacteria in a culture.
+}
+\details{
+The \code{scenarioSimulate} function was developed to allow for the investigation of the pattern of fitness development and population growth of bacteria cultured over multiple exposures of antibiotic stress. As mutagenic compounds, antibiotics induce mutations within a bacterial population, which leads to a rapid increase in the fitness of a bacteria. By varing the \code{Nl} and \code{Ng} arguments, the complexity of a bacterial genome can be varied, and the effect such a change will have on a bacterial population can be examined. \cr\cr
+Bacteria are simulated to be cultured for 24 hours under environmental stress. The argument \code{thr} represents the antibiotic stress placed on a bacterial culture. Bacteria that do not meet this threshold (i.e. bacteria that have not mutated enough in each generation) are barred from proliferation, to represent antibitic stress. In order to avoid population crashes, \code{startingFitness} should be greater than \code{thr}. \cr\cr
+The argument \code{maxPsize} represents the carrying capacity of the bacterial population. It is also set to adhere to the RAM limitations on standard computer machines used to run this simulation. The argument \code{runs} can be set to indicate the number of times the simulation will be run; more simulation runs provide greater accuracy in the depiction of the simulated population behavior.
 }
 \examples{
 x <- scenarioSimulate(Nl = c(1, 6, 10), Ng = c(6, 10, 12), runs = 10)
